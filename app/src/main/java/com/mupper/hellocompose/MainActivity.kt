@@ -21,7 +21,9 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            HelloCompose()
+            HelloComposeTheme {
+                HelloCompose()
+            }
         }
     }
 }
@@ -30,7 +32,7 @@ class MainActivity : ComponentActivity() {
 fun HelloCompose() {
     Card(
         elevation = 4.dp,
-        shape = RoundedCornerShape(20.dp)
+        shape = MaterialTheme.shapes.large
     ) {
         Column(
             modifier = Modifier.padding(8.dp),
@@ -45,12 +47,16 @@ fun HelloCompose() {
                 "Este curso es el mejor!!",
                 style = MaterialTheme.typography.h4
             )
-            Text("Curso de Jetpack compose")
+            Text(
+                "Curso de Jetpack compose",
+                style = MaterialTheme.typography.body1
+            )
             Button(
                 onClick = {
 
                 },
-                modifier = Modifier.padding(top = 16.dp)
+                modifier = Modifier.padding(top = 16.dp),
+                shape = MaterialTheme.shapes.large
             ) {
                 Text("Click me")
             }
@@ -63,5 +69,7 @@ fun HelloCompose() {
 )
 @Composable
 fun HelloComposePreview() {
-    HelloCompose()
+    HelloComposeTheme {
+        HelloCompose()
+    }
 }
